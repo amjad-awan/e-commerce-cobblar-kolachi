@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0da0b293.css",
+    "main.js": "/static/js/main.59d88533.js",
+    "static/js/200.564505af.chunk.js": "/static/js/200.564505af.chunk.js",
+    "static/js/539.bfc32c6a.chunk.js": "/static/js/539.bfc32c6a.chunk.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/08_webm.webm": "/static/media/08_webm.232e88d651d3cf3a78cb.webm",
+    "static/media/out-let.JPG": "/static/media/out-let.ab56ee33ac9f8bd3e16a.JPG",
+    "static/media/hero-image-1.jpg": "/static/media/hero-image-1.3ebbb902bf2406726b35.jpg",
+    "static/media/hero-image-3.jpg": "/static/media/hero-image-3.e045dbab662bcf4a1973.jpg",
+    "static/media/hero-image-2.jpg": "/static/media/hero-image-2.97f28787a726a1a5851c.jpg",
+    "static/media/cate-1.jpg": "/static/media/cate-1.52132ac0692602533148.jpg",
+    "static/media/feature-p.jpg": "/static/media/feature-p.d3cdf92f841c97b2b8a9.jpg",
+    "static/media/whatsapp-removebg-preview.png": "/static/media/whatsapp-removebg-preview.04669dd7b1f1109a713a.png",
+    "static/media/futura medium bt.ttf": "/static/media/futura medium bt.4e762c29ef7b44ca51cb.ttf",
+    "static/media/futura light bt.ttf": "/static/media/futura light bt.ead7282f8edac7904e53.ttf",
+    "index.html": "/index.html",
+    "main.0da0b293.css.map": "/static/css/main.0da0b293.css.map",
+    "main.59d88533.js.map": "/static/js/main.59d88533.js.map",
+    "200.564505af.chunk.js.map": "/static/js/200.564505af.chunk.js.map",
+    "539.bfc32c6a.chunk.js.map": "/static/js/539.bfc32c6a.chunk.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0da0b293.css",
+    "static/js/main.59d88533.js"
+  ]
+}
