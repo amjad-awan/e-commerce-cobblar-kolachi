@@ -14,8 +14,7 @@ const cors = require("cors");
 
 const app = express();
 dotenv.config();
-const PORT = process.env.PORT || 8080;
-
+const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Apply CORS middleware
@@ -29,12 +28,10 @@ app.use("/api/v1/category", CategoryRoute);
 app.use("/api/v1/celibiriest", CelibirtyFileRoute);
 app.use("/api/v1/orders", OrderRoute);
 
-app.use(express.static(path.join(__dirname, "./client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
+// app.use(express.static(path.join(__dirname, "./client/build")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 app.listen(PORT, () => {
   console.log(`App is running at ${PORT}`);
 });

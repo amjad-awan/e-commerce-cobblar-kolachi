@@ -53,6 +53,7 @@ const loginController = async (req, res) => {
   try {
     const user = await AuthModal.findOne({ email });
 
+
     if (!user) {
       return res
         .status(401)
@@ -66,7 +67,9 @@ const loginController = async (req, res) => {
         .status(401)
         .json({ success: false, message: "password does not match" });
     }
+
     const token = await getToken(user._id);
+
     res
       .status(200)
       .json({ user: user, success: true, message: "you are logged in", token });

@@ -75,7 +75,6 @@ exports.getFeaturedProducts = async (req, res) => {
         select: "-photo",
       })
       .select("-photos");
-    console.log("products", products);
     res.status(200).json({
       products,
       success: true,
@@ -91,17 +90,14 @@ exports.getFeaturedProducts = async (req, res) => {
 exports.searchProductsController = async (req, res) => {
   try {
     const searchTerm = req.params.searchTerm;
-    console.log("searchTerm", searchTerm)
 
     const regex = new RegExp(searchTerm, "i");
-    console.log("regex", regex)
 
 
     // First, find categories that match the search term
     const categories = await CategoryModal.find({
       name: { $regex: regex },
     }).select("-photo");
-console.log("categories", categories)
     // Create an array to store product results
     const products = [];
 
@@ -114,11 +110,9 @@ console.log("categories", categories)
           path: "productcategory",
           select: "-photo",
         }).select("-photos");
-        console.log("categoryProducts", categoryProducts)
 
       products.push(...categoryProducts);
     }
-    console.log("products", products)
 
 
     // Send the combined list of products as the response
@@ -152,6 +146,7 @@ exports.getSpecificCategoryProducts = async (req, res) => {
     });
   }
 };
+
 
 exports.getFeaturedProductsPhoto = async (req, res) => {
   const { pId, photoIndex } = req.params;
@@ -194,7 +189,6 @@ exports.getSingleProduct = async (req, res) => {
         select: "-photo",
       })
       .select("-photos");
-    console.log("product", product);
     res.status(200).json({
       product,
       success: true,
@@ -214,10 +208,11 @@ exports.filterAndPagination = async (req, res) => {
 
   const page = parseInt(filters.page) || 1;
   const pageSize = 10; // Number of items per page
-
   try {
     // Apply filters to the products array (implement your filtering logic)
     const products = await ProductModal.find().select("-photos");
+  
+
     let filteredProducts = products;
 
     if (filters.sale === "true") {
@@ -246,11 +241,11 @@ exports.filterAndPagination = async (req, res) => {
       );
       currentSortingOrder = "hightolow";
     }
-
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
 
+   
     res.json({
       products: paginatedProducts,
       currentSortingOrder: currentSortingOrder, // Return the current sorting order

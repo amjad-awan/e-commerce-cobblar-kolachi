@@ -1,5 +1,5 @@
 const fs = require("fs");
-const  CategoryModal  = require("../modals/CategoryModal.js");
+const CategoryModal = require("../modals/CategoryModal.js");
 const multer = require("multer");
 
 const createCategory = async (req, res) => {
@@ -10,7 +10,6 @@ const createCategory = async (req, res) => {
     }
     const exists = await CategoryModal.findOne({ name });
 
-    console.log("exists", exists);
 
     if (exists) {
       return res
@@ -30,7 +29,6 @@ const createCategory = async (req, res) => {
     await newCategory.save();
     res.status(200).json({ success: true, message: "new category added" });
   } catch (error) {
-    console.error("Error creating category:", error);
     if (error.name === "ValidationError") {
       const validationErrors = Object.values(error.errors).map(
         (err) => err.message
@@ -60,15 +58,10 @@ const getCategories = async (req, res) => {
 const searchCategoryController = async (req, res) => {
   try {
     const categoryName = req.params.categoryName;
-    console.log("categoryName", categoryName);
-    // Use a regular expression for partial match search
     const regex = new RegExp(categoryName, "i"); // 'i' for case-insensitive search
-
-    // Use the ProductModal to find products with a category name containing the provided substring
     const products = await CategoryModal.find({
       name: { $regex: regex },
     }).select("-photo"); // Populate the category field if needed
-    console.log("products", products);
     if (!products) {
       return res
         .status(404)
@@ -98,10 +91,36 @@ const getCategoryPhoto = async (req, res) => {
     });
   }
 };
+const getSingleCategory = async (req, res) => {
+  const { catID } = req.params
+  console.log("catID",catID)
+
+  try {
+    const category = await CategoryModal.findOne({ _id: catID })
+    if (!category) {
+      return res.status(404).json({
+        success: false,
+        message: "No category found",
+      })
+    }
+    console.log("category",category)
+    return res.status(200).json({
+      success: success,
+      category: category?.name,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while fetching category.",
+    });
+
+  }
+}
 
 module.exports = {
   createCategory,
   getCategories,
+  getSingleCategory,
   searchCategoryController,
   getCategoryPhoto,
 };
