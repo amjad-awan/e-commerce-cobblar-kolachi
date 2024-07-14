@@ -32,6 +32,10 @@ app.use("/api/v1/orders", OrderRoute);
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
+
+app.get("*", (req, res) => {
+  res.send("api working");
+});
 app.listen(PORT, () => {
   console.log(`App is running at ${PORT}`);
 });
